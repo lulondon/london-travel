@@ -1,0 +1,39 @@
+{
+  "name": "london-travel",
+  "version": "1.0.0",
+  "description": "A digital signage screen/website for LU London",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lulondon/london-travel.git"
+  },
+  "author": "Jon Linnell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lulondon/london-travel/issues"
+  },
+  "homepage": "https://github.com/lulondon/london-travel#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.9.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.1.0",
+    "node-sass": "^4.8.3",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.3.0",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
