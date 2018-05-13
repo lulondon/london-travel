@@ -60,6 +60,6 @@ typings/
 # macOS debris
 .DS_Store
 
-# Config
-config.json
+# Production builds
+dist/
 
