@@ -1,0 +1,12 @@
+{
+  "tube": {
+    "modes": [
+      "tube",
+      "overground",
+      "dlr",
+      "tflrail",
+      "tram"
+    ],
+    "refresh": 120000
+  }
+}

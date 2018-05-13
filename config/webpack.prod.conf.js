@@ -13,6 +13,5 @@ module.exports = merge(common, {
       sourceMap: true
     }),
     new CleanWebpack(['dist'], { root: app })
-  ],
-  mode: 'production'
+  ]
 })

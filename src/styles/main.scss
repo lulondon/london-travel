@@ -1,3 +1,59 @@
 body {
   font-family: 'Lato', sans-serif
 }
+
+/* Custom data styles */
+
+.tube-service-information {
+  background-color: #F1F1F1;
+}
+
+.tube-status-icon {
+  line-height: 2rem;
+  vertical-align: middle;
+}
+
+.attribution {
+  color: #333;
+  font-size: 0.8rem;
+}
+
+.line-status-text {
+  color: #333;
+}
+
+.jumbotron {
+  border-radius: 0.25rem;
+}
+
+/* Loading bar */
+
+.null-loader {
+  height: 4px;
+}
+
+.loader {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #B70062;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}

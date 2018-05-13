@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const dotenvWebpack = require('dotenv-webpack')
+const extractTextPlugin = require('extract-text-webpack-plugin')
 
 const paths = require('./paths')
 
@@ -21,9 +22,10 @@ module.exports = {
       path: `${app}/.env`,
       systemvars: true
     }),
+    new extractTextPlugin('bundle.css')
   ],
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.(jsx)$/,
         exclude: /node_modules/,
@@ -40,6 +42,13 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         use: 'file-loader?outputPath=images/'
+      },
+      {
+        test: /\.(css)$/,
+        use: extractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.(scss)$/,

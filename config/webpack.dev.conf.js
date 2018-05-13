@@ -10,6 +10,5 @@ module.exports = merge(common, {
     inline: true,
     historyApiFallback: true,
     publicPath: '/'
-  },
-  mode: 'development'
+  }
 })

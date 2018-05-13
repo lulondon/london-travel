@@ -1,5 +1,7 @@
 import React from 'react'
 
-const MainView = () => <div>It works!</div>
+import TubeStatusView from '../TubeStatusView'
+
+const MainView = () => <div><TubeStatusView /></div>
 
 export default MainView
