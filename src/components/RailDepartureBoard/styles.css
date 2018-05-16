@@ -1,0 +1,46 @@
+.departure-board-header {
+  background-color: rgb(54, 17, 99);
+  color: rgb(255, 255, 255);
+}
+
+.departure-board-header-subtitle {
+  font-size: 0.9rem;
+}
+
+.list-group div:nth-child(2) {
+  border-bottom: none;
+}
+
+.list-group div:nth-child(3) {
+  border-top: none;
+}
+
+.loader-padding {
+  height: 4px;
+}
+
+.loader {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #009BC9;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}
