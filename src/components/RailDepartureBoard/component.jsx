@@ -17,13 +17,11 @@ class RailDepartureBoard extends Component {
     return (
       <div className='list-group' id='accordion'>
         <div className='list-group-item departure-board-header'>
-          <div role="tab">
-            <div className='m-0 p-2 pb-0'>
-              <h3>{station.name}</h3>
-              <p className='departure-board-header-subtitle m-0'>
-                {`Next trains from this station${callingPoint ? ` calling at ${callingPoint.name}` : '.'}`}
-              </p>
-            </div>
+          <div className='m-0 p-2 pb-0'>
+            <h3>{station.name}</h3>
+            <p className='departure-board-header-subtitle m-0'>
+              {`Next trains from this station${callingPoint ? ` calling at ${callingPoint.name}` : '.'}`}
+            </p>
           </div>
         </div>
         {
@@ -31,9 +29,8 @@ class RailDepartureBoard extends Component {
             ? <div className='list-group-item p-0 loader' />
             : <div className='list-group-item p-0 loader-padding' />
         }
-        {
-          departures.map(service =>
-            <RailServiceInfo key={service.serviceId} service={service} />)
+        {departures.map(service =>
+          <RailServiceInfo key={service.serviceId} service={service} />)
         }
       </div>
     )

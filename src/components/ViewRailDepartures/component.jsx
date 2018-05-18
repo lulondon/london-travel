@@ -37,11 +37,12 @@ class RailDeparturesView extends Component {
                       <label htmlFor='stationSelector'>Station Name</label>
                       <Typeahead
                         labelKey='name'
-                        ref='station'
+                        maxResults={5}
                         multiple={false}
-                        options={railStations}
                         onChange={handleUpdateStation}
                         onFocus={handleClearCallingPoint}
+                        options={railStations}
+                        ref='station'
                       />
                     </div>
                   </div>
@@ -49,13 +50,13 @@ class RailDeparturesView extends Component {
                     <div className='form-group col-lg col-xs-12'>
                       <label htmlFor='stationSelector'>Filter (trains calling at...)</label>
                       <Typeahead
-                        labelKey='name'
-                        ref='callingPoint'
-                        multiple={false}
-                        options={railStations}
                         disabled={!station}
+                        labelKey='name'
+                        maxResults={5}
+                        multiple={false}
                         onChange={handleUpdateCallingPoint}
-                        autocomplete={false}
+                        options={railStations}
+                        ref='callingPoint'
                       />
                     </div>
                   </div>
