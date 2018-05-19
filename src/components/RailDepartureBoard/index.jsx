@@ -17,7 +17,8 @@ class RailDepartureBoard extends Component {
       departures: [],
       loading: false,
       station,
-      callingPoint
+      callingPoint,
+      ready: false
     }
 
     this.loadDate = this.loadData.bind(this)
@@ -48,7 +49,7 @@ class RailDepartureBoard extends Component {
     const { station, callingPoint } = this.state
 
     if (station) {
-      this.setState({ loading: true })
+      this.setState({ loading: true, ready: false })
 
       axios.post(`${darwinApiProxy}/getDepartureBoardWithDetails/${station.code}`, {
         token: darwinToken,
@@ -56,10 +57,12 @@ class RailDepartureBoard extends Component {
           destination: callingPoint ? callingPoint.code : null
         }
       })
-        .then(response => this.setState({
-          departures: response.data.trainServices,
-          loading: false
-        }))
+        .then((response) => {
+          this.setState({
+            departures: response.data.trainServices,
+            loading: false
+          }, () => setTimeout(() => this.setState({ ready: true }), 100))
+        })
         .catch(() => {
           this.setState({
             loading: false
@@ -69,13 +72,21 @@ class RailDepartureBoard extends Component {
   }
 
   render() {
-    const { departures, station, callingPoint } = this.state
+    const {
+      departures,
+      station,
+      callingPoint,
+      loading,
+      ready
+    } = this.state
 
     return (
       <RailDepartureBoardView
         station={station}
         callingPoint={callingPoint}
         departures={departures}
+        loading={loading}
+        ready={ready}
       />
     )
   }

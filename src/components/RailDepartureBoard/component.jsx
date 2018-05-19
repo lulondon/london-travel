@@ -1,17 +1,38 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import base64Url from 'base64-url'
+import posed from 'react-pose'
 
 import RailServiceInfo from '../RailServiceInfo'
 
 import './styles.css'
 
-class RailDepartureBoard extends Component {
+const departuresListOptions = {
+  open: {
+    delayChildren: 100,
+    staggerChildren: 30
+  },
+  closed: {
+    staggerChildren: 20
+  }
+}
+
+const departureOptions = {
+  open: { opacity: 1, y: 0 },
+  closed: { opacity: 0, y: 10 }
+}
+
+const DeparturesList = posed.div(departuresListOptions)
+const Departure = posed.div(departureOptions)
+
+class RailDepartureBoard extends PureComponent {
   render() {
     const {
       station,
       callingPoint,
       loading,
-      departures
+      departures,
+      ready
     } = this.props
 
     return (
@@ -29,9 +50,14 @@ class RailDepartureBoard extends Component {
             ? <div className='list-group-item p-0 loader' />
             : <div className='list-group-item p-0 loader-padding' />
         }
-        {departures.map(service =>
-          <RailServiceInfo key={service.serviceId} service={service} />)
-        }
+        <DeparturesList pose={ ready ? 'open' : 'closed' }>
+          {
+            departures.map(service =>
+              <Departure key={base64Url.escape(service.serviceId)}>
+                <RailServiceInfo service={service} />
+              </Departure>)
+          }
+        </DeparturesList>
       </div>
     )
   }
@@ -41,6 +67,7 @@ RailDepartureBoard.propTypes = {
   station: PropTypes.object.isRequired,
   callingPoint: PropTypes.object,
   loading: PropTypes.bool,
+  ready: PropTypes.bool,
   departures: PropTypes.array.isRequired
 }
 
