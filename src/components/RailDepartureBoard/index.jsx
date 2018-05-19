@@ -49,7 +49,7 @@ class RailDepartureBoard extends Component {
     const { station, callingPoint } = this.state
 
     if (station) {
-      this.setState({ loading: true, ready: false })
+      this.setState({ loading: true })
 
       axios.post(`${darwinApiProxy}/getDepartureBoardWithDetails/${station.code}`, {
         token: darwinToken,
@@ -60,7 +60,8 @@ class RailDepartureBoard extends Component {
         .then((response) => {
           this.setState({
             departures: response.data.trainServices,
-            loading: false
+            loading: false,
+            ready: false
           }, () => setTimeout(() => this.setState({ ready: true }), 100))
         })
         .catch(() => {
