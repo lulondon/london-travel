@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const dotenvWebpack = require('dotenv-webpack')
 const extractTextPlugin = require('extract-text-webpack-plugin')
@@ -27,17 +26,17 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: 'url-loader?limit=10000,outputPath=fonts/',
+        use: 'url-loader?limit=10000',
       },
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: 'file-loader?outputPath=fonts/'
+        use: 'file-loader',
       },
       {
         test: /\.(png|jpg)$/,

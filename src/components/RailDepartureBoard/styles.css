@@ -1,36 +1,21 @@
-@import '~bootstrap/scss/bootstrap';
-
-body {
-  font-family: 'Lato', sans-serif
+.departure-board-header {
+  background-color: rgb(54, 17, 99) !important;
+  color: rgb(255, 255, 255);
 }
 
-/* Custom data styles */
-
-.tube-service-information {
-  background-color: #F1F1F1;
+.departure-board-header-subtitle {
+  font-size: 0.9rem;
 }
 
-.tube-status-icon {
-  line-height: 2rem;
-  vertical-align: middle;
+.list-group div:nth-child(2) {
+  border-bottom: none;
 }
 
-.attribution {
-  color: #333;
-  font-size: 0.8rem;
+.list-group div:nth-child(3) {
+  border-top: none;
 }
 
-.line-status-text {
-  color: #333;
-}
-
-.jumbotron {
-  border-radius: 0.25rem;
-}
-
-/* Loading bar */
-
-.null-loader {
+.loader-padding {
   height: 4px;
 }
 
@@ -47,7 +32,7 @@ body {
   left: -200px;
   width: 200px;
   height: 4px;
-  background-color: #B70062;
+  background-color: #009BC9;
   animation: loading 2s linear infinite;
 }
 

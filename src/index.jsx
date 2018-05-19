@@ -1,14 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
+import 'bootstrap'
+
+import 'font-awesome/scss/font-awesome.scss'
 
 import './styles/main.scss'
 
-import MainView from './components/MainView'
+import ViewMain from './components/ViewMain'
 
 render(
-  <MainView />,
+  <ViewMain />,
   document.getElementById('root')
 )

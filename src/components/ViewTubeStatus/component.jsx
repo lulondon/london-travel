@@ -2,7 +2,7 @@ import React from 'react'
 
 import TubeStatus from '../TubeStatus'
 
-const Page = () =>
+const ViewTubeStatus = () =>
   <div className='container-fluid'>
     <div className='row'>
       <div className='col-xs-12 col-lg-6 offset-lg-3'>
@@ -21,4 +21,4 @@ const Page = () =>
     </div>
   </div>
 
-export default Page
+export default ViewTubeStatus

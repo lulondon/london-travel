@@ -1,0 +1,9 @@
+.departure-destination-name {
+  color: #333;
+}
+
+.departure-platform {
+  color: #444;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
