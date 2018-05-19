@@ -6,7 +6,7 @@ import { rail } from '../../../config/config.json'
 
 import RailDepartureBoardView from './component'
 
-const { darwinApiProxy, darwinToken, interval } = rail
+const { interval } = rail
 
 class RailDepartureBoard extends Component {
   constructor(props) {
@@ -51,8 +51,8 @@ class RailDepartureBoard extends Component {
     if (station) {
       this.setState({ loading: true })
 
-      axios.post(`${darwinApiProxy}/getDepartureBoardWithDetails/${station.code}`, {
-        token: darwinToken,
+      axios.post(`${process.env.DARWIN_PROXY}/getDepartureBoardWithDetails/${station.code}`, {
+        token: process.env.DARWIN_TOKEN,
         options: {
           destination: callingPoint ? callingPoint.code : null
         }
