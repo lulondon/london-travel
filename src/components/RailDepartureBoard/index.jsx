@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
+import { railStationShape } from '../../lib/dataShapes'
+
 import { rail } from '../../../config/config.json'
 
 import RailDepartureBoardView from './component'
@@ -18,13 +20,13 @@ class RailDepartureBoard extends Component {
       loading: false,
       station,
       callingPoint,
-      ready: false
+      ready: false,
     }
 
     this.loadDate = this.loadData.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // Move this into constructor?
     this.loadData()
 
@@ -37,7 +39,7 @@ class RailDepartureBoard extends Component {
 
     this.setState({
       station,
-      callingPoint
+      callingPoint,
     }, () => this.loadData())
   }
 
@@ -51,22 +53,22 @@ class RailDepartureBoard extends Component {
     if (station) {
       this.setState({ loading: true })
 
-      axios.post(`${process.env.DARWIN_PROXY}/getDepartureBoardWithDetails/${station.code}`, {
+      axios.post(`${process.env.DARWIN_PROXY}/getDepartureBoardWithDetails/${station.crs}`, {
         token: process.env.DARWIN_TOKEN,
         options: {
-          destination: callingPoint ? callingPoint.code : null
-        }
+          destination: callingPoint ? callingPoint.crs : null,
+        },
       })
         .then((response) => {
           this.setState({
             departures: response.data.trainServices,
             loading: false,
-            ready: false
+            ready: false,
           }, () => setTimeout(() => this.setState({ ready: true }), 100))
         })
         .catch(() => {
           this.setState({
-            loading: false
+            loading: false,
           })
         })
     }
@@ -78,7 +80,7 @@ class RailDepartureBoard extends Component {
       station,
       callingPoint,
       loading,
-      ready
+      ready,
     } = this.state
 
     return (
@@ -93,9 +95,16 @@ class RailDepartureBoard extends Component {
   }
 }
 
+RailDepartureBoard.defaultProps = {
+  callingPoint: {
+    name: null,
+    crs: null,
+  },
+}
+
 RailDepartureBoard.propTypes = {
-  station: PropTypes.object.isRequired,
-  callingPoint: PropTypes.object
+  station: PropTypes.shape(railStationShape).isRequired,
+  callingPoint: PropTypes.shape(railStationShape),
 }
 
 export default RailDepartureBoard

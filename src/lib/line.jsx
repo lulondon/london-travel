@@ -19,8 +19,8 @@ export const colours = {
   text: {
     circle: '#113892',
     'hammersmith-city': '#113892',
-    'waterloo-city': '#113892'
-  }
+    'waterloo-city': '#113892',
+  },
 }
 
 export const textColour = (line) => {

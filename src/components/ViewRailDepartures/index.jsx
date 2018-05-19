@@ -8,7 +8,7 @@ class ViewRailDepartures extends Component {
     this.state = {
       callingPoint: null,
       station: null,
-      errors: []
+      errors: [],
     }
 
     this.handleAddError = this.handleAddError.bind(this)

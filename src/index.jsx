@@ -11,5 +11,5 @@ import ViewMain from './components/ViewMain'
 
 render(
   <ViewMain />,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

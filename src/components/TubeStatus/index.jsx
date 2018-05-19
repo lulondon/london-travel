@@ -11,9 +11,9 @@ class TubeStatus extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
+      tubeStatusData: [],
       error: false,
-      loading: true
+      loading: true,
     }
   }
 
@@ -35,33 +35,33 @@ class TubeStatus extends Component {
     axios.get(`https://api.tfl.gov.uk/line/mode/${modes.join(',')}/status`, {
       params: {
         app_id: process.env.TFL_APP_ID,
-        app_key: process.env.TFL_APP_KEY
-      }
+        app_key: process.env.TFL_APP_KEY,
+      },
     })
       .then((response) => {
         component.setState({
-          data: response.data,
-          loading: false
+          tubeStatusData: response.data,
+          loading: false,
         })
       })
       .catch(() => {
         this.setState({
           error: true,
-          loading: false
+          loading: false,
         })
       })
   }
 
   render() {
     const {
-      data,
+      tubeStatusData,
       error,
-      loading
+      loading,
     } = this.state
 
     return (
       <TubeStatusView
-        data={data}
+        tubeStatusData={tubeStatusData}
         error={error} // Not currently used. Will be fixed in future.
         loading={loading}
       />
